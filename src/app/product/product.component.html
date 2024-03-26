@@ -1,0 +1,82 @@
+<div class="container bg-info-subtle p-4">
+    <div class="row">
+      <div class="col-7 m-auto">
+        
+        <h1 class="text-center">Cadastro de produtos</h1>
+        
+        <form [formGroup]="formGroupProduct">
+          
+          <div class="input-group mb-3">
+            <input type="text"
+            placeholder="Nome do produto"
+             class="form-control"
+             id="name"
+             formControlName = name>
+             
+
+            <span class="input-group-text">ID</span>
+            <input type="text"
+             class="form-control"
+              aria-label="ID do produto"
+              id="id"
+              formControlName="id">
+        
+          </div>
+  
+          <div class="input-group mb-3">
+            <span class="input-group-text">Preço</span>
+            <input type="number"
+             class="form-control"
+              aria-label="Preço do produto"
+              id="preço"
+              formControlName="preco">
+
+            <span class="input-group-text">R$</span>
+            <span class="input-group-text">Quantidade</span>
+            <input type="text"
+             class="form-control" 
+             aria-label="Quantidade do produto"
+             id="quantidade"
+             formControlName="quantidade">
+          </div>
+  
+          <div class="form-floating">
+            <textarea class="form-control"
+             placeholder="Coloque a descrição do produto aqui"
+              id="descricao"
+              formControlName="descricao"></textarea>
+            <label for="descricao">Descrição</label>
+          </div>
+  
+        </form>
+        <button type="button" class="btn btn-primary"
+        (click)="save()">Salvar</button>
+  
+        <h2 class="mt-5 text-center"> Produtos</h2>
+  
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Produto</th>
+              <th scope="col">Preço</th>
+              <th scope="col">Quantidade</th>
+              <th scope="col">Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+             <th scope="row">{{product.id}}</th>
+             <td>{{product.name}}</td>
+             <td>{{product.preco}}</td>
+             <td>{{product.quantidade}}</td>
+             <td>{{product.descricao}}</td>
+            </tr>
+  
+          </tbody>
+        </table>
+  
+      </div>
+    </div>
+  </div>
+  
