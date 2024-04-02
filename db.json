@@ -1,0 +1,24 @@
+{
+    "products": [
+      { "id": 1,
+       "name": "Pão",
+        "preco": "2",
+         "quantidade": "2",
+          "descricao":" Pão quentinho"
+         },
+
+      { "id": 2,
+       "name": "Pão",
+        "preco": "2",
+         "quantidade": "2",
+          "descricao":" Pão quentinho"
+         },
+
+      { "id": 3,
+       "name": "Pão",
+        "preco": "2",
+       "quantidade": "2",
+        "descricao":" Pão quentinho" }   
+    ]
+    
+  }

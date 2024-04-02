@@ -1,19 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Product } from '../product';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit {
 
   products: Product [] = [];
 
   formGroupProduct: FormGroup;
 
-  constructor(private formBuilder: FormBuilder){
+  ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  loadProducts(){
+    this.service.getProducts().subscribe({
+      next: data => this.products = data
+    });
+
+  }
+
+  constructor(private formBuilder: FormBuilder, private service: ProductService){
     this.formGroupProduct = formBuilder.group({
       id : [''],
       name : [''],
@@ -21,15 +33,16 @@ export class ProductComponent {
       quantidade : [''],
       descricao : ['']
 
-
-
     })
 
-
   }
+
   
   save(){
-    this.products.push(this.formGroupProduct.value)
+    this.service.save(this.formGroupProduct.value).subscribe({
+      next: data => this.products.push(data)
+
+    });
 
 
   }
